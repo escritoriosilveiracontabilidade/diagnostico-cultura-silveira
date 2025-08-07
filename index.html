@@ -1,25 +1,233 @@
+
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Diagnóstico de Cultura</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diagnóstico de Cultura - Gestão de Pessoas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background-color: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .logo img {
+      max-width: 250px;
+    }
+    h1 {
+      text-align: center;
+      color: #0a2540;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+      color: #333;
+    }
+    input[type="text"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .pergunta {
+      margin-top: 20px;
+    }
+    .pergunta p {
+      font-weight: bold;
+      color: #0a2540;
+    }
+    .opcoes {
+      display: flex;
+      gap: 20px;
+      margin-top: 10px;
+    }
+    .opcoes label {
+      font-weight: normal;
+    }
+    button {
+      background-color: #0a2540;
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 30px;
+      width: 100%;
+    }
+    .resultado {
+      display: none;
+      text-align: center;
+      margin-top: 30px;
+    }
+    .resultado h2 {
+      font-size: 22px;
+      color: #0a2540;
+    }
+    .resultado p {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    .resultado a {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #25d366;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-  <header class="header">
-    <img src="logo.png" alt="Silveira Contabilidade" class="logo" />
-  </header>
-  <main class="container">
-    <h1>Diagnóstico de Cultura na Gestão de Pessoas</h1>
+  <div class="container">
+    <div class="logo">
+      <img src="logo.png" alt="Logo Silveira" />
+    </div>
+    <h1>Diagnóstico de Cultura - Gestão de Pessoas</h1>
     <form id="diagnosticoForm">
-      <input type="text" name="nome" placeholder="Seu nome" required />
-      <input type="tel" name="telefone" placeholder="Seu telefone (com DDD)" required />
-      <div id="perguntas"></div>
+      <label>Nome</label>
+      <input type="text" name="nome" required />
+      <label>Telefone</label>
+      <input type="tel" name="telefone" required />
+
+      <div class="pergunta">
+        <p>1. A empresa possui missão, visão e valores bem definidos?</p>
+        <div class="opcoes">
+          <label><input type="radio" name="p1" value="Sim" required /> Sim</label>
+          <label><input type="radio" name="p1" value="Não" /> Não</label>
+        </div>
+      </div>
+
+      <div class="pergunta">
+        <p>2. Os colaboradores conhecem e compartilham esses valores?</p>
+        <div class="opcoes">
+          <label><input type="radio" name="p2" value="Sim" required /> Sim</label>
+          <label><input type="radio" name="p2" value="Não" /> Não</label>
+        </div>
+      </div>
+
+      <div class="pergunta">
+        <p>3. A liderança promove uma cultura de feedback?</p>
+        <div class="opcoes">
+          <label><input type="radio" name="p3" value="Sim" required /> Sim</label>
+          <label><input type="radio" name="p3" value="Não" /> Não</label>
+        </div>
+      </div>
+
+      <div class="pergunta">
+        <p>4. A comunicação interna é clara e eficiente?</p>
+        <div class="opcoes">
+          <label><input type="radio" name="p4" value="Sim" required /> Sim</label>
+          <label><input type="radio" name="p4" value="Não" /> Não</label>
+        </div>
+      </div>
+
+      <div class="pergunta">
+        <p>5. Há um plano de desenvolvimento para os colaboradores?</p>
+        <div class="opcoes">
+          <label><input type="radio" name="p5" value="Sim" required /> Sim</label>
+          <label><input type="radio" name="p5" value="Não" /> Não</label>
+        </div>
+      </div>
+
+      <div class="pergunta">
+        <p>6. A empresa promove ações de engajamento e clima organizacional?</p>
+        <div class="opcoes">
+          <label><input type="radio" name="p6" value="Sim" required /> Sim</label>
+          <label><input type="radio" name="p6" value="Não" /> Não</label>
+        </div>
+      </div>
+
+      <div class="pergunta">
+        <p>7. Existe uma estrutura de cargos, salários e benefícios?</p>
+        <div class="opcoes">
+          <label><input type="radio" name="p7" value="Sim" required /> Sim</label>
+          <label><input type="radio" name="p7" value="Não" /> Não</label>
+        </div>
+      </div>
+
       <button type="submit">Finalizar Diagnóstico</button>
     </form>
-    <div id="resultado" class="hidden"></div>
-  </main>
+
+    <div class="resultado" id="resultado">
+      <h2 id="classificacao"></h2>
+      <p id="mensagemFinal"></p>
+      <a href="https://api.whatsapp.com/send?phone=5519998162919" target="_blank">Falar com um especialista</a>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("diagnosticoForm");
+    const resultado = document.getElementById("resultado");
+    const classificacao = document.getElementById("classificacao");
+    const mensagemFinal = document.getElementById("mensagemFinal");
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      let respostasSim = 0;
+      for (let i = 1; i <= 7; i++) {
+        if (formData.get("p" + i) === "Sim") respostasSim++;
+      }
+
+      let classificacaoTexto = "";
+      let mensagem = "";
+      if (respostasSim >= 6) {
+        classificacaoTexto = "Alta Maturidade Cultural";
+        mensagem =
+          "Parabéns! Sua empresa demonstra uma forte maturidade na gestão de pessoas. Continue evoluindo com estratégias assertivas.";
+      } else if (respostasSim >= 4) {
+        classificacaoTexto = "Média Maturidade Cultural";
+        mensagem =
+          "Sua empresa possui uma boa base, mas ainda há pontos importantes a desenvolver na cultura e gestão de pessoas.";
+      } else {
+        classificacaoTexto = "Baixa Maturidade Cultural";
+        mensagem =
+          "Sua empresa está no início da jornada de fortalecimento da cultura. Vamos juntos construir uma base mais sólida?";
+      }
+
+      // Envio para Google Apps Script
+      try {
+        await fetch(
+          "https://script.google.com/macros/s/AKfycbwqnl8dKhV2xkp-4VTnT9MOcXIaXTlG3MTZ7KkU720G7srzgm3s4j8l8QrH7NUqzjQ9Iw/exec",
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+      } catch (error) {
+        console.error("Erro ao enviar dados:", error);
+      }
+
+      form.style.display = "none";
+      classificacao.textContent = classificacaoTexto;
+      mensagemFinal.textContent = mensagem;
+      resultado.style.display = "block";
+    });
+  </script>
 </body>
 </html>
