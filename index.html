@@ -2,52 +2,24 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diagnóstico de Cultura na Gestão de Pessoas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Diagnóstico de Cultura</title>
   <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <div class="container">
-    <img src="logo.png" alt="Logo Silveira" class="logo" />
+  <header class="header">
+    <img src="logo.png" alt="Silveira Contabilidade" class="logo" />
+  </header>
+  <main class="container">
     <h1>Diagnóstico de Cultura na Gestão de Pessoas</h1>
-    <form id="formulario">
-      <input type="text" name="nome" placeholder="Seu nome" required /><br />
-      <input type="tel" name="telefone" placeholder="Telefone com DDD" required /><br />
-      <div id="perguntas">
-        <label><strong>1.</strong> Sua empresa possui missão, visão e valores bem definidos? <br />
-          <input type="radio" name="p1" value="sim" required /> Sim
-          <input type="radio" name="p1" value="nao" /> Não
-        </label><br />
-        <label><strong>2.</strong> Existe avaliação de desempenho regular dos colaboradores? <br />
-          <input type="radio" name="p2" value="sim" required /> Sim
-          <input type="radio" name="p2" value="nao" /> Não
-        </label><br />
-        <label><strong>3.</strong> Há um plano de cargos e salários estruturado? <br />
-          <input type="radio" name="p3" value="sim" required /> Sim
-          <input type="radio" name="p3" value="nao" /> Não
-        </label><br />
-        <label><strong>4.</strong> São feitas ações de endomarketing ou engajamento interno? <br />
-          <input type="radio" name="p4" value="sim" required /> Sim
-          <input type="radio" name="p4" value="nao" /> Não
-        </label><br />
-        <label><strong>5.</strong> Há investimento em treinamentos e desenvolvimento? <br />
-          <input type="radio" name="p5" value="sim" required /> Sim
-          <input type="radio" name="p5" value="nao" /> Não
-        </label><br />
-        <label><strong>6.</strong> Existe avaliação de clima organizacional? <br />
-          <input type="radio" name="p6" value="sim" required /> Sim
-          <input type="radio" name="p6" value="nao" /> Não
-        </label><br />
-        <label><strong>7.</strong> Sua empresa possui políticas de feedback estruturadas? <br />
-          <input type="radio" name="p7" value="sim" required /> Sim
-          <input type="radio" name="p7" value="nao" /> Não
-        </label>
-      </div>
-      <br />
-      <button type="submit">Enviar</button>
+    <form id="diagnosticoForm">
+      <input type="text" name="nome" placeholder="Seu nome" required />
+      <input type="tel" name="telefone" placeholder="Seu telefone (com DDD)" required />
+      <div id="perguntas"></div>
+      <button type="submit">Finalizar Diagnóstico</button>
     </form>
-    <div id="resultado" style="display:none;"></div>
-  </div>
-  <script src="script.js"></script>
+    <div id="resultado" class="hidden"></div>
+  </main>
 </body>
 </html>
