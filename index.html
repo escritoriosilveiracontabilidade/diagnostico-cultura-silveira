@@ -1,25 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Diagnóstico de Cultura</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico de Cultura - Silveira Contabilidade</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="header">
-    <img src="logo.png" alt="Silveira Contabilidade" class="logo" />
-  </header>
-  <main class="container">
+  <header>
     <h1>Diagnóstico de Cultura na Gestão de Pessoas</h1>
+  </header>
+  <main>
     <form id="diagnosticoForm">
-      <input type="text" name="nome" placeholder="Seu nome" required />
-      <input type="tel" name="telefone" placeholder="Seu telefone (com DDD)" required />
+      <label>Nome:</label>
+      <input type="text" name="nome" required>
+
+      <label>Telefone:</label>
+      <input type="tel" name="telefone" required>
+
       <div id="perguntas"></div>
-      <button type="submit">Finalizar Diagnóstico</button>
+
+      <button type="submit">Enviar</button>
     </form>
-    <div id="resultado" class="hidden"></div>
+
+    <div id="resultado" class="hidden">
+      <h2 id="resultadoTitulo"></h2>
+      <p id="resultadoTexto"></p>
+      <p style="margin-top: 12px;">
+        <a href="https://api.whatsapp.com/send?phone=5519998162919" target="_blank"
+           style="text-decoration:none;color:white;background:#25D366;padding:10px 14px;border-radius:8px;">
+          Fale com um especialista no WhatsApp
+        </a>
+      </p>
+    </div>
   </main>
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-
 const perguntas = [
   "Sua empresa possui valores organizacionais claros e divulgados para toda a equipe?",
   "Os líderes da sua empresa têm tempo e preparo para desenvolver suas equipes além das demandas operacionais?",
@@ -11,12 +10,15 @@ const perguntas = [
 
 window.onload = () => {
   const perguntasDiv = document.getElementById("perguntas");
+  if (!perguntasDiv) return;
+
   perguntas.forEach((texto, i) => {
     const item = document.createElement("div");
+    item.className = "pergunta";
     item.innerHTML = `
       <label>${texto}</label><br/>
-      <label><input type="radio" name="pergunta${i}" value="Sim" required /> Sim</label>
-      <label><input type="radio" name="pergunta${i}" value="Não" required /> Não</label>
+      <label><input type="radio" name="p${i+1}" value="Sim" required /> Sim</label>
+      <label><input type="radio" name="p${i+1}" value="Não" required /> Não</label>
     `;
     perguntasDiv.appendChild(item);
   });
@@ -24,29 +26,47 @@ window.onload = () => {
 
 document.getElementById("diagnosticoForm").addEventListener("submit", async function(e) {
   e.preventDefault();
-  const form = e.target;
-  const formData = new FormData(form);
-  const respostas = perguntas.map((_, i) => formData.get(`pergunta${i}`));
-  const simCount = respostas.filter(r => r === "Sim").length;
-  let resultadoTexto = "";
 
-  if (simCount >= 6) {
-    resultadoTexto = "<h2>Parabéns! Cultura de Gestão com <strong>Alta Maturidade</strong></h2><p>Sua empresa tem uma base sólida de cultura e práticas de pessoas — continue fortalecendo!</p>";
-  } else if (simCount >= 3) {
-    resultadoTexto = "<h2>Cultura de Gestão com <strong>Média Maturidade</strong></h2><p>Você está no caminho, mas existem pontos que podem estar impedindo um crescimento sustentável.</p>";
-  } else {
-    resultadoTexto = "<h2>Cultura de Gestão com <strong>Baixa Maturidade</strong></h2><p>É hora de estruturar sua cultura e gestão de pessoas para garantir o sucesso da empresa.</p>";
+  const form = e.target;
+  const data = new FormData(form);
+
+  let simCount = 0;
+  for (let i = 1; i <= 7; i++) simCount += (data.get(`p${i}`) === "Sim") ? 1 : 0;
+
+  const resultado =
+    simCount >= 6 ? "Alta Maturidade" :
+    simCount >= 3 ? "Média Maturidade" :
+                    "Baixa Maturidade";
+
+  data.append("resultado", resultado);
+
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwqnl8dKhV2xkp-4VTnT9MOcXIaXTIG3MTZ7KkU72OG7srzgm3s4j8l8QrH7NUqzjQ9Iw/exec";
+
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: "POST",
+      body: data
+    });
+  } catch (err) {
+    console.error("Erro ao enviar para planilha:", err);
   }
 
-  document.getElementById("resultado").classList.remove("hidden");
-  document.getElementById("resultado").innerHTML = `
-    ${resultadoTexto}
-    <p style='margin-top: 1rem;'><a href='https://api.whatsapp.com/send?phone=5519998162919' target='_blank' style='text-decoration:none;color:white;background:#25D366;padding:10px 15px;border-radius:6px;'>Fale com um especialista no WhatsApp</a></p>
-  `;
+  const bloco = document.getElementById("resultado");
+  const titulo = document.getElementById("resultadoTitulo");
+  const texto = document.getElementById("resultadoTexto");
 
-  await fetch("https://script.google.com/macros/s/AKfycby7ajM5xkmuwzWIHfpk1MPEtNPIPyOzNM9WUxLxDnwRz1r_DQy7IddcPNap8O3iNoVn/exec", {
-    method: "POST",
-    body: formData
-  });
+  let mensagem = "";
+  if (resultado === "Alta Maturidade") {
+    mensagem = "Sua empresa tem uma base sólida de cultura e práticas de pessoas — continue fortalecendo!";
+  } else if (resultado === "Média Maturidade") {
+    mensagem = "Você está no caminho, mas existem pontos que podem estar impedindo um crescimento sustentável.";
+  } else {
+    mensagem = "É hora de estruturar sua cultura e gestão de pessoas para garantir o sucesso da empresa.";
+  }
+
+  if (titulo) titulo.innerHTML = `Parabéns! Cultura de Gestão com <strong>${resultado}</strong>`;
+  if (texto) texto.textContent = mensagem;
+  if (bloco) bloco.classList.remove("hidden");
+
   form.reset();
 });
