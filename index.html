@@ -1,15 +1,53 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Diagnóstico de Cultura - Silveira</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diagnóstico de Cultura na Gestão de Pessoas</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body style="font-family:sans-serif; text-align:center; padding:40px;">
-  <img src="logo.png" alt="Logo Silveira" style="max-width:250px;margin-bottom:30px;" />
-  <h1>Diagnóstico de Cultura na Gestão de Pessoas</h1>
-  <p>Parabéns! Cultura de Gestão com <strong>Alta Maturidade</strong></p>
-  <p>Sua empresa tem uma base sólida de cultura e práticas de pessoas — continue fortalecendo!</p>
-  <a href="https://api.whatsapp.com/send?phone=5519998162919" target="_blank" style="margin-top:30px;display:inline-block;padding:10px 20px;background-color:#004080;color:white;text-decoration:none;border-radius:5px;">Falar com um especialista</a>
+<body>
+  <div class="container">
+    <img src="logo.png" alt="Logo Silveira" class="logo" />
+    <h1>Diagnóstico de Cultura na Gestão de Pessoas</h1>
+    <form id="formulario">
+      <input type="text" name="nome" placeholder="Seu nome" required /><br />
+      <input type="tel" name="telefone" placeholder="Telefone com DDD" required /><br />
+      <div id="perguntas">
+        <label><strong>1.</strong> Sua empresa possui missão, visão e valores bem definidos? <br />
+          <input type="radio" name="p1" value="sim" required /> Sim
+          <input type="radio" name="p1" value="nao" /> Não
+        </label><br />
+        <label><strong>2.</strong> Existe avaliação de desempenho regular dos colaboradores? <br />
+          <input type="radio" name="p2" value="sim" required /> Sim
+          <input type="radio" name="p2" value="nao" /> Não
+        </label><br />
+        <label><strong>3.</strong> Há um plano de cargos e salários estruturado? <br />
+          <input type="radio" name="p3" value="sim" required /> Sim
+          <input type="radio" name="p3" value="nao" /> Não
+        </label><br />
+        <label><strong>4.</strong> São feitas ações de endomarketing ou engajamento interno? <br />
+          <input type="radio" name="p4" value="sim" required /> Sim
+          <input type="radio" name="p4" value="nao" /> Não
+        </label><br />
+        <label><strong>5.</strong> Há investimento em treinamentos e desenvolvimento? <br />
+          <input type="radio" name="p5" value="sim" required /> Sim
+          <input type="radio" name="p5" value="nao" /> Não
+        </label><br />
+        <label><strong>6.</strong> Existe avaliação de clima organizacional? <br />
+          <input type="radio" name="p6" value="sim" required /> Sim
+          <input type="radio" name="p6" value="nao" /> Não
+        </label><br />
+        <label><strong>7.</strong> Sua empresa possui políticas de feedback estruturadas? <br />
+          <input type="radio" name="p7" value="sim" required /> Sim
+          <input type="radio" name="p7" value="nao" /> Não
+        </label>
+      </div>
+      <br />
+      <button type="submit">Enviar</button>
+    </form>
+    <div id="resultado" style="display:none;"></div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
