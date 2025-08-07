@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Diagnóstico de Cultura</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="header">
+    <img src="logo.png" alt="Silveira Contabilidade" class="logo" />
+  </header>
+  <main class="container">
+    <h1>Diagnóstico de Cultura na Gestão de Pessoas</h1>
+    <form id="diagnosticoForm">
+      <input type="text" name="nome" placeholder="Seu nome" required />
+      <input type="tel" name="telefone" placeholder="Seu telefone (com DDD)" required />
+      <div id="perguntas"></div>
+      <button type="submit">Finalizar Diagnóstico</button>
+    </form>
+    <div id="resultado" class="hidden"></div>
+  </main>
+</body>
+</html>
