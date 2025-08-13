@@ -1,28 +1,22 @@
-# Diagnóstico de Cultura Organizacional — Layout (v2)
+# Diagnóstico de Cultura Organizacional — Layout 2.0 (CORS-safe)
 
-Este pacote contém um arquivo **index.html** pronto para publicar (Vercel, GitHub Pages, Netlify ou pasta local).
+Este pacote contém um `index.html` pronto para publicar (Vercel/Netlify/GitHub Pages/local).
 
-## O que mudou
-- 8 perguntas atualizadas
-- Layout moderno com azul escuro + dourado (Silveira)
-- Classificação automática (Alta, Média, Baixa) — **somente texto**, sem exibir contagem de "Sim"
-- Botão de WhatsApp no final
-- Envio para Google Apps Script (aba **Respostas**)
+## O que está pronto
+- **Logo branca** na faixa azul (inline Base64).
+- **8 perguntas** (versão nova).
+- **Classificação automática** (Alta/Média/Baixa) — sem exibir a contagem de "Sim".
+- **Envio para Apps Script** usando `Content-Type: text/plain` (evita preflight/CORS).
+- **WhatsApp** no final.
 
-## Como apontar para SUA URL do Apps Script
-1. Abra `index.html` e procure pela seção **CONFIGURAR AQUI A URL DO APP SCRIPT**.
-2. Substitua o valor de `ENDPOINT_URL` pela **mesma URL** da implantação Web App que você já usa (a do seu print).
-
-```js
-const ENDPOINT_URL = "https://script.google.com/macros/s/SEU_ID/exec";
+## Endpoint configurado
+```
+https://script.google.com/macros/s/AKfycby7ajM5xkmuwzWIHfpk1MPEtNPIPyOzNM9WUxLxDnwRz1r_DQy7IddcPNap8O3iNoVn/exec
 ```
 
-> Dica: após substituir, salve e publique o arquivo. Não é necessário alterar nada no restante do HTML.
+## Testes rápidos
+1. Abra a URL do seu App Script `/exec` → deve mostrar `Webhook ativo.`
+2. Abra `.../exec?action=test&nome=Teste&telefone=11999999999` → deve gravar uma linha na aba *Respostas*.
+3. Publique o `index.html` e faça um envio real — confira a planilha.
 
-## Publicação
-- **Vercel**: arraste o projeto ou selecione o diretório ao criar o projeto. Ele já tem apenas um `index.html`.
-- **GitHub Pages**: crie um repositório e envie o `index.html`. Ative Pages na branch principal.
-- **Local**: abra o arquivo `index.html` no navegador (duplo clique).
-
-## Suporte
-Se quiser que eu integre a versão com PDF automático do resultado, cabeçalho com logo em PNG/SVG, métricas históricas e página de relatório, posso gerar os arquivos complementares também.
+Se quiser migrar para uma **nova planilha**, use o script "auto" que te enviei na conversa. Depois, troque a URL do seu App Script (caso crie outra implantação) e o site já funcionará.
