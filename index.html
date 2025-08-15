@@ -47,6 +47,7 @@
       padding:12px 16px;background:#25D366;color:#111;font-weight:800;margin-top:10px}
     footer{ text-align:center; color:#778; font-size:12px; padding:24px }
   </style>
+<style id="fix-header-overlap">.container{margin:16px auto 40px !important;} header{position:relative;}</style>
 </head>
 <body>
   <header>
@@ -90,7 +91,7 @@
 
 <script>
 // ===== URL DO APP SCRIPT (já configurada) =====
-const ENDPOINT_URL = "https://script.google.com/macros/s/AKfycby7ajM5xkmuwzWIHfpk1MPEtNPIPyOzNM9WUxLxDnwRz1r_DQy7IddcPNap8O3iNoVn/exec";
+const ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbwxMzbIv7WBzKfl9Wjs_p6TOnVpvMtkTOmFJcm_vdfov18_7kKc3uwMBbc-yOujVcYY/exec";
 
 // ===== PERGUNTAS (8) =====
 const PERGUNTAS = [
@@ -168,7 +169,7 @@ btnEnviar.addEventListener("click", async () => {
 
   badge.className = "badge " + (css || "");
   badge.textContent = nivel + " Maturidade Cultural";
-  msg.textContent = mensagem;
+  msg.innerHTML = mensagem;
   resultado.style.display = "block";
   window.scrollTo({top: document.body.scrollHeight, behavior:"smooth"});
 
@@ -197,6 +198,14 @@ btnReiniciar.addEventListener("click", () => {
 btnPreencherDepois.addEventListener("click", () => {
   if(confirm("Deseja limpar e preencher depois?")){ btnReiniciar.click(); }
 });
+</script>
+<script>
+/* override não destrutivo das mensagens de resultado */
+function classificar(qtdSim){
+  if(qtdSim <= 3) return {nivel:"Baixa", css:"baixa", mensagem: "\ud83d\udd34 <strong>Baixa Maturidade Cultural</strong><br>Sua organiza\u00e7\u00e3o ainda apresenta baixa clareza e aplica\u00e7\u00e3o pr\u00e1tica da cultura no dia a dia. Isso significa que os valores n\u00e3o est\u00e3o totalmente traduzidos em comportamentos consistentes, e a lideran\u00e7a pode n\u00e3o estar alinhada em suas mensagens e a\u00e7\u00f5es. Esse cen\u00e1rio impacta engajamento, produtividade e reten\u00e7\u00e3o de talentos.<br><br><strong>Pr\u00f3ximos passos:</strong> inicie pelo mapeamento e defini\u00e7\u00e3o clara dos valores, estabele\u00e7a rituais que reforcem comportamentos desejados e alinhe toda a lideran\u00e7a a esse prop\u00f3sito. Para inspirar ideias, recomendamos a playlist <a href=\"https://youtube.com/playlist?list=PL2XOA876cnwJw5kWpB2zcWuh9_8tPI7Ng&si=sPI01sLgfwyaQrEB\" target=\"_blank\" rel=\"noopener\"><u>Cultura forte, empresa forte</u></a>.<br><br>Podemos te ajudar a acelerar esse processo com metodologia, acompanhamento e ferramentas pr\u00e1ticas."};
+  if(qtdSim <= 5) return {nivel:"Média", css:"media", mensagem: "\ud83d\udfe1 <strong>M\u00e9dia Maturidade Cultural</strong><br>Sua empresa j\u00e1 conta com bases culturais definidas, mas a aplica\u00e7\u00e3o ainda \u00e9 inconsistente entre \u00e1reas, l\u00edderes e equipes. Essa oscila\u00e7\u00e3o pode gerar ru\u00eddos de comunica\u00e7\u00e3o e comportamentos desalinhados, enfraquecendo o potencial da cultura.<br><br><strong>Pr\u00f3ximos passos:</strong> fortale\u00e7a a comunica\u00e7\u00e3o interna, garanta que a lideran\u00e7a d\u00ea exemplo constante e crie rituais que traduzam os valores em pr\u00e1tica di\u00e1ria. Para se aprofundar, indicamos a playlist <a href=\"https://youtube.com/playlist?list=PL2XOA876cnwJWW2dj1bXhp6eZqVVAYIJX&si=CHCBkR6nH4RItHAh\" target=\"_blank\" rel=\"noopener\"><u>Liderar pessoas para gerar resultados</u></a>.<br><br>Podemos te apoiar atuando justamente nessa consolida\u00e7\u00e3o, garantindo que a cultura seja vivida por todos."};
+  return {nivel:"Alta", css:"alta", mensagem: "\ud83d\udfe2 <strong>Alta Maturidade Cultural</strong><br>Parab\u00e9ns! Sua cultura \u00e9 clara, consistente e percebida no dia a dia da opera\u00e7\u00e3o. Esse \u00e9 um grande ativo para atrair, engajar e reter talentos. No entanto, culturas fortes exigem manuten\u00e7\u00e3o e constante evolu\u00e7\u00e3o para n\u00e3o perderem relev\u00e2ncia com o tempo.<br><br><strong>Pr\u00f3ximos passos:</strong> implemente m\u00e9tricas para monitorar a cultura, mantenha e inove nos rituais, e prepare l\u00edderes para sustentar e multiplicar esse padr\u00e3o. Podemos te apoiar na estrutura\u00e7\u00e3o desse acompanhamento cont\u00ednuo e na cria\u00e7\u00e3o de a\u00e7\u00f5es que garantam a longevidade dessa maturidade."};
+}
 </script>
 </body>
 </html>
